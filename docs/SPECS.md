@@ -5,9 +5,9 @@ Specifications are written **before** tests and implementation. Each card in
 
 | Spec | File | Status |
 |------|------|--------|
-| User domain | [`specs/user.md`](./specs/user.md) | TODO |
-| Book domain | [`specs/book.md`](./specs/book.md) | TODO |
-| Rental domain | [`specs/rental.md`](./specs/rental.md) | TODO |
-| API contract | [`specs/api.md`](./specs/api.md) | TODO |
+| User domain | [`specs/user.md`](./specs/user.md) | REVIEWED |
+| Book domain | [`specs/book.md`](./specs/book.md) | REVIEWED |
+| Rental domain | [`specs/rental.md`](./specs/rental.md) | REVIEWED |
+| API contract | [`specs/api.md`](./specs/api.md) | REVIEWED |
 
 > Update the **Status** column as specs are written and reviewed (TODO → DRAFT → REVIEWED).

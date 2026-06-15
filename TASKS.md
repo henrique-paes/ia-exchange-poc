@@ -62,11 +62,11 @@ Domain: a library where **users** can **create books** and **rent books**.
 
 ### CARD-010: Write domain specs first
 
-- [ ] `docs/specs/user.md` — user fields, validation rules
-- [ ] `docs/specs/book.md` — book fields, who can create, validation
-- [ ] `docs/specs/rental.md` — rent rules, return rules, availability, limits
-- [ ] `docs/specs/api.md` — REST endpoints, request/response shapes, error codes
-- [ ] Review specs before writing any test
+- [x] `docs/specs/user.md` — user fields, validation rules
+- [x] `docs/specs/book.md` — book fields, who can create, validation
+- [x] `docs/specs/rental.md` — rent rules, return rules, availability, limits
+- [x] `docs/specs/api.md` — REST endpoints, request/response shapes, error codes
+- [x] Review specs before writing any test
 
 ---
 
