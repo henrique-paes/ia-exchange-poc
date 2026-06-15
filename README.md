@@ -35,7 +35,7 @@ docker compose up --build
 
 ## Local development
 
-> Requires Node.js 18+ (20 LTS recommended).
+> Requires Node.js 24 (see `.nvmrc`). With nvm: `nvm install && nvm use`.
 
 Backend:
 
