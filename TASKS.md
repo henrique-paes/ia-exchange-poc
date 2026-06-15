@@ -74,52 +74,52 @@ Domain: a library where **users** can **create books** and **rent books**.
 
 ### CARD-020: User domain
 
-- [ ] Spec: confirm `docs/specs/user.md`
-- [ ] Test: user model validation (red)
-- [ ] Impl: user model + repository (green)
-- [ ] Test: `POST /users`, `GET /users/:id` (red)
-- [ ] Impl: user endpoints (green)
-- [ ] Refactor + review
+- [x] Spec: confirm `docs/specs/user.md`
+- [x] Test: user model validation (red)
+- [x] Impl: user model + repository (green)
+- [x] Test: `POST /users`, `GET /users/:id` (red)
+- [x] Impl: user endpoints (green)
+- [x] Refactor + review
 
 ### CARD-021: Book domain
 
-- [ ] Spec: confirm `docs/specs/book.md`
-- [ ] Test: book model validation (red)
-- [ ] Impl: book model + repository (green)
-- [ ] Test: `POST /books` (create by user), `GET /books`, `GET /books/:id` (red)
-- [ ] Impl: book endpoints (green)
-- [ ] Refactor + review
+- [x] Spec: confirm `docs/specs/book.md`
+- [x] Test: book model validation (red)
+- [x] Impl: book model + repository (green)
+- [x] Test: `POST /books` (create by user), `GET /books`, `GET /books/:id` (red)
+- [x] Impl: book endpoints (green)
+- [x] Refactor + review
 
 ### CARD-022: Rental domain — core
 
-- [ ] Spec: confirm `docs/specs/rental.md`
-- [ ] Test: rent a book — marks unavailable, links user+book (red)
-- [ ] Impl: rent use case + endpoint `POST /rentals` (green)
-- [ ] Test: cannot rent already-rented book (red)
-- [ ] Impl: availability guard (green)
-- [ ] Refactor + review
+- [x] Spec: confirm `docs/specs/rental.md`
+- [x] Test: rent a book — marks unavailable, links user+book (red)
+- [x] Impl: rent use case + endpoint `POST /rentals` (green)
+- [x] Test: cannot rent already-rented book (red)
+- [x] Impl: availability guard (green)
+- [x] Refactor + review
 
 ### CARD-023: Rental domain — return & rules
 
-- [ ] Test: return a book — marks available again (red)
-- [ ] Impl: return use case + endpoint `POST /rentals/:id/return` (green)
-- [ ] Test: rental limit per user enforced (red)
-- [ ] Impl: limit rule (green)
-- [ ] Test: list rentals for a user `GET /users/:id/rentals` (red)
-- [ ] Impl: list endpoint (green)
-- [ ] Refactor + review
+- [x] Test: return a book — marks available again (red)
+- [x] Impl: return use case + endpoint `POST /rentals/:id/return` (green)
+- [x] Test: rental limit per user enforced (red)
+- [x] Impl: limit rule (green)
+- [x] Test: list rentals for a user `GET /users/:id/rentals` (red)
+- [x] Impl: list endpoint (green)
+- [x] Refactor + review
 
 ### CARD-024: Error handling & validation middleware
 
-- [ ] Test: invalid payloads return 400 with consistent shape (red)
-- [ ] Impl: validation + error middleware (green)
-- [ ] Test: not-found returns 404 (red)
-- [ ] Impl: 404 handling (green)
+- [x] Test: invalid payloads return 400 with consistent shape (red)
+- [x] Impl: validation + error middleware (green)
+- [x] Test: not-found returns 404 (red)
+- [x] Impl: 404 handling (green)
 
 ### CARD-025: Integration tests
 
-- [ ] End-to-end flow: create user → create book → rent → return (via supertest)
-- [ ] Run against dockerized db
+- [x] End-to-end flow: create user → create book → rent → return (via supertest)
+- [x] Run against dockerized db
 
 ---
 
