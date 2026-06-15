@@ -26,6 +26,14 @@ describe('users API', () => {
     expect(got.status).toBe(200);
   });
 
+  it('lists users', async () => {
+    await newUser('Alice');
+    await newUser('Bob');
+    const list = await request(app).get('/users');
+    expect(list.status).toBe(200);
+    expect(list.body).toHaveLength(2);
+  });
+
   it('returns 404 for an unknown user', async () => {
     const res = await request(app).get('/users/00000000-0000-0000-0000-000000000000');
     expect(res.status).toBe(404);

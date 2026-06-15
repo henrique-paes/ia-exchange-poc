@@ -32,6 +32,7 @@ All request and response bodies are JSON.
 
 ### Users
 - `POST /users` — body `{ name }` → `201 User`
+- `GET /users` → `200 User[]`
 - `GET /users/:id` → `200 User` | `404`
 - `GET /users/:id/rentals` → `200 Rental[]` | `404`
 

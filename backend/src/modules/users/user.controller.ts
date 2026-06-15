@@ -9,6 +9,10 @@ export async function createUser(req: Request, res: Response): Promise<void> {
   res.status(201).json(user);
 }
 
+export async function listUsers(_req: Request, res: Response): Promise<void> {
+  res.json(await userService.list());
+}
+
 export async function getUser(req: Request, res: Response): Promise<void> {
   const user = await userService.getById(req.params.id);
   res.json(user);

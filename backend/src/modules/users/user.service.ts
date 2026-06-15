@@ -15,6 +15,10 @@ export function createUserService(repo: UserRepository) {
       if (!user) throw new NotFoundError('user'); // rental.user.exists / user.getById
       return user;
     },
+
+    list(): Promise<User[]> {
+      return repo.list();
+    },
   };
 }
 
