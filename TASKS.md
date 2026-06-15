@@ -13,48 +13,55 @@ Domain: a library where **users** can **create books** and **rent books**.
 ## Phase 0 — Project Structure & Tooling
 
 ### CARD-001: Repository scaffold
-- [ ] Create monorepo layout: `/backend`, `/frontend`, `/docs`, `/docker`
-- [ ] Add root `README.md` describing project + run instructions
-- [ ] Add root `.gitignore` (node_modules, dist, .env, coverage)
-- [ ] Add `docs/SPECS.md` index file for SDD specs
+
+- [x] Create monorepo layout: `/backend`, `/frontend`, `/docs`, `/docker`
+- [x] Add root `README.md` describing project + run instructions
+- [x] Add root `.gitignore` (node_modules, dist, .env, coverage)
+- [x] Add `docs/SPECS.md` index file for SDD specs
 
 ### CARD-002: Backend tooling
-- [ ] Init `backend` with `npm init` + TypeScript (`tsconfig.json`)
-- [ ] Add Express (or Fastify), config loader, `src/` + `tests/` dirs
-- [ ] Add Jest + ts-jest + supertest for TDD
-- [ ] Add ESLint + Prettier
-- [ ] Add npm scripts: `dev`, `build`, `test`, `test:watch`, `lint`
+
+- [x] Init `backend` with `npm init` + TypeScript (`tsconfig.json`)
+- [x] Add Express (or Fastify), config loader, `src/` + `tests/` dirs
+- [x] Add Jest + ts-jest + supertest for TDD
+- [x] Add ESLint + Prettier
+- [x] Add npm scripts: `dev`, `build`, `test`, `test:watch`, `lint`
 
 ### CARD-003: Frontend tooling
-- [ ] Init `frontend` with Vite + React + TypeScript
-- [ ] Add Vitest + React Testing Library for TDD
-- [ ] Add ESLint + Prettier
-- [ ] Add npm scripts: `dev`, `build`, `test`, `test:watch`, `lint`
-- [ ] Add API client base (axios/fetch wrapper) with base URL from env
+
+- [x] Init `frontend` with Vite + React + TypeScript
+- [x] Add Vitest + React Testing Library for TDD
+- [x] Add ESLint + Prettier
+- [x] Add npm scripts: `dev`, `build`, `test`, `test:watch`, `lint`
+- [x] Add API client base (axios/fetch wrapper) with base URL from env
 
 ### CARD-004: Docker structure
-- [ ] `docker/backend.Dockerfile` (multi-stage: build + run)
-- [ ] `docker/frontend.Dockerfile` (build + nginx serve)
-- [ ] `docker-compose.yml` wiring frontend, backend, db (postgres)
-- [ ] Add `.env.example` for compose
-- [ ] Add volumes for db persistence + hot reload in dev
-- [ ] Verify `docker compose up` brings full stack online
+
+- [x] `docker/backend.Dockerfile` (multi-stage: build + run)
+- [x] `docker/frontend.Dockerfile` (build + nginx serve)
+- [x] `docker-compose.yml` wiring frontend, backend, db (postgres)
+- [x] Add `.env.example` for compose
+- [x] Add volumes for db persistence + hot reload in dev
+- [x] Verify `docker compose up` brings full stack online
 
 ### CARD-005: Database & migrations
-- [ ] Choose ORM (Prisma/TypeORM/Knex) + add to backend
-- [ ] Define schema: `User`, `Book`, `Rental`
-- [ ] Add migration tooling + first migration
-- [ ] Add seed script with sample data
+
+- [x] Choose ORM (Prisma) + add to backend
+- [x] Define schema: `User`, `Book`, `Rental`
+- [x] Add migration tooling + first migration
+- [x] Add seed script with sample data
 
 ### CARD-006: CI pipeline (optional but recommended)
-- [ ] Add pipeline running `lint` + `test` for backend and frontend
-- [ ] Fail build on test failure or coverage drop
+
+- [x] Add pipeline running `lint` + `test` for backend and frontend
+- [x] Fail build on test failure or coverage drop
 
 ---
 
 ## Phase 1 — Specs (SDD)
 
 ### CARD-010: Write domain specs first
+
 - [ ] `docs/specs/user.md` — user fields, validation rules
 - [ ] `docs/specs/book.md` — book fields, who can create, validation
 - [ ] `docs/specs/rental.md` — rent rules, return rules, availability, limits
@@ -66,6 +73,7 @@ Domain: a library where **users** can **create books** and **rent books**.
 ## Phase 2 — Backend Execution (TDD)
 
 ### CARD-020: User domain
+
 - [ ] Spec: confirm `docs/specs/user.md`
 - [ ] Test: user model validation (red)
 - [ ] Impl: user model + repository (green)
@@ -74,6 +82,7 @@ Domain: a library where **users** can **create books** and **rent books**.
 - [ ] Refactor + review
 
 ### CARD-021: Book domain
+
 - [ ] Spec: confirm `docs/specs/book.md`
 - [ ] Test: book model validation (red)
 - [ ] Impl: book model + repository (green)
@@ -82,6 +91,7 @@ Domain: a library where **users** can **create books** and **rent books**.
 - [ ] Refactor + review
 
 ### CARD-022: Rental domain — core
+
 - [ ] Spec: confirm `docs/specs/rental.md`
 - [ ] Test: rent a book — marks unavailable, links user+book (red)
 - [ ] Impl: rent use case + endpoint `POST /rentals` (green)
@@ -90,6 +100,7 @@ Domain: a library where **users** can **create books** and **rent books**.
 - [ ] Refactor + review
 
 ### CARD-023: Rental domain — return & rules
+
 - [ ] Test: return a book — marks available again (red)
 - [ ] Impl: return use case + endpoint `POST /rentals/:id/return` (green)
 - [ ] Test: rental limit per user enforced (red)
@@ -99,12 +110,14 @@ Domain: a library where **users** can **create books** and **rent books**.
 - [ ] Refactor + review
 
 ### CARD-024: Error handling & validation middleware
+
 - [ ] Test: invalid payloads return 400 with consistent shape (red)
 - [ ] Impl: validation + error middleware (green)
 - [ ] Test: not-found returns 404 (red)
 - [ ] Impl: 404 handling (green)
 
 ### CARD-025: Integration tests
+
 - [ ] End-to-end flow: create user → create book → rent → return (via supertest)
 - [ ] Run against dockerized db
 
@@ -113,26 +126,31 @@ Domain: a library where **users** can **create books** and **rent books**.
 ## Phase 3 — Frontend Execution (TDD)
 
 ### CARD-030: App shell & routing
+
 - [ ] Test: app renders, routes resolve (red)
 - [ ] Impl: router + layout (green)
 
 ### CARD-031: Users UI
+
 - [ ] Test: user list + create form (red)
 - [ ] Impl: user page + API calls (green)
 
 ### CARD-032: Books UI
+
 - [ ] Test: book list renders (red)
 - [ ] Impl: book list page (green)
 - [ ] Test: create-book form validates + submits (red)
 - [ ] Impl: create-book form (green)
 
 ### CARD-033: Rentals UI
+
 - [ ] Test: rent button disabled when unavailable (red)
 - [ ] Impl: rent action + state (green)
 - [ ] Test: return button + my-rentals list (red)
 - [ ] Impl: return action + rentals view (green)
 
 ### CARD-034: API integration & error states
+
 - [ ] Test: loading + error states rendered (red)
 - [ ] Impl: error/loading handling (green)
 
@@ -141,10 +159,12 @@ Domain: a library where **users** can **create books** and **rent books**.
 ## Phase 4 — Wire-up & Delivery
 
 ### CARD-040: Full-stack run
+
 - [ ] `docker compose up` serves frontend talking to backend talking to db
 - [ ] Smoke test the create→rent→return flow in browser
 
 ### CARD-041: Docs & handoff
+
 - [ ] Update README with architecture diagram + run steps
 - [ ] Document env vars
 - [ ] Record known limitations + next steps
