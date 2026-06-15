@@ -1,0 +1,52 @@
+// Prisma schema — Library domain: User, Book, Rental.
+// See docs/specs/ for the authoritative field-level specs (SDD).
+
+generator client {
+  provider      = "prisma-client-js"
+  // Alpine (musl) + openssl3 engine target, plus host native for local dev.
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  // books this user created
+  createdBooks Book[]   @relation("BookCreator")
+  // rentals made by this user
+  rentals      Rental[]
+}
+
+model Book {
+  id        String   @id @default(uuid())
+  title     String
+  author    String
+  available Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  creatorId String
+  creator   User     @relation("BookCreator", fields: [creatorId], references: [id])
+
+  rentals   Rental[]
+}
+
+model Rental {
+  id         String    @id @default(uuid())
+  rentedAt   DateTime  @default(now())
+  returnedAt DateTime?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  bookId String
+  book   Book   @relation(fields: [bookId], references: [id])
+
+  @@index([userId])
+  @@index([bookId])
+}
