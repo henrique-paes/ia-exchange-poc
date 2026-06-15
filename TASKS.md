@@ -127,32 +127,32 @@ Domain: a library where **users** can **create books** and **rent books**.
 
 ### CARD-030: App shell & routing
 
-- [ ] Test: app renders, routes resolve (red)
-- [ ] Impl: router + layout (green)
+- [x] Test: app renders, routes resolve (red)
+- [x] Impl: router + layout (green)
 
 ### CARD-031: Users UI
 
-- [ ] Test: user list + create form (red)
-- [ ] Impl: user page + API calls (green)
+- [x] Test: user list + create form (red)
+- [x] Impl: user page + API calls (green)
 
 ### CARD-032: Books UI
 
-- [ ] Test: book list renders (red)
-- [ ] Impl: book list page (green)
-- [ ] Test: create-book form validates + submits (red)
-- [ ] Impl: create-book form (green)
+- [x] Test: book list renders (red)
+- [x] Impl: book list page (green)
+- [x] Test: create-book form validates + submits (red)
+- [x] Impl: create-book form (green)
 
 ### CARD-033: Rentals UI
 
-- [ ] Test: rent button disabled when unavailable (red)
-- [ ] Impl: rent action + state (green)
-- [ ] Test: return button + my-rentals list (red)
-- [ ] Impl: return action + rentals view (green)
+- [x] Test: rent button disabled when unavailable (red)
+- [x] Impl: rent action + state (green)
+- [x] Test: return button + my-rentals list (red)
+- [x] Impl: return action + rentals view (green)
 
 ### CARD-034: API integration & error states
 
-- [ ] Test: loading + error states rendered (red)
-- [ ] Impl: error/loading handling (green)
+- [x] Test: loading + error states rendered (red)
+- [x] Impl: error/loading handling (green)
 
 ---
 
