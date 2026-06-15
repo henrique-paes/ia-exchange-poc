@@ -160,11 +160,11 @@ Domain: a library where **users** can **create books** and **rent books**.
 
 ### CARD-040: Full-stack run
 
-- [ ] `docker compose up` serves frontend talking to backend talking to db
-- [ ] Smoke test the create→rent→return flow in browser
+- [x] `docker compose up` serves frontend talking to backend talking to db
+- [x] Smoke test the create→rent→return flow in browser
 
 ### CARD-041: Docs & handoff
 
-- [ ] Update README with architecture diagram + run steps
-- [ ] Document env vars
-- [ ] Record known limitations + next steps
+- [x] Update README with architecture diagram + run steps
+- [x] Document env vars
+- [x] Record known limitations + next steps
