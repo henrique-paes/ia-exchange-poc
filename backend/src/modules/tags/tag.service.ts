@@ -8,6 +8,8 @@ import { TagRepository, tagRepository } from './tag.repository';
 export function createTagService(repo: TagRepository) {
   return {
     async create(input: CreateTagInput): Promise<Tag> {
+      // TOCTOU: findByNameInsensitive + create não é atômico (sem índice UNIQUE nativo).
+      // Aceitável no POC; garantia forte exigiria índice funcional lower(name) no banco.
       const existing = await repo.findByNameInsensitive(input.name);
       if (existing) throw new ConflictError('tag name already exists');
       return repo.create({ name: input.name });

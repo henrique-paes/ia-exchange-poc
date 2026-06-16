@@ -1,6 +1,7 @@
 import { createTagService } from '../src/modules/tags/tag.service';
 import { ConflictError, NotFoundError } from '../src/errors/AppError';
 import { TagRepository } from '../src/modules/tags/tag.repository';
+import { createTagSchema } from '../src/modules/tags/tag.schema';
 import { Tag } from '@prisma/client';
 
 // Fakes let us exercise the rules (docs/specs/tag.md) without a database.
@@ -77,5 +78,31 @@ describe('tag.getById', () => {
     const repo = fakeRepo({ findById: jest.fn(async () => null) });
     const svc = createTagService(repo);
     await expect(svc.getById('nonexistent')).rejects.toBeInstanceOf(NotFoundError);
+  });
+});
+
+describe('createTagSchema', () => {
+  it('rejects empty string (tag.md tag.name.required)', () => {
+    const result = createTagSchema.safeParse({ name: '' });
+    expect(result.success).toBe(false);
+  });
+
+  it('rejects whitespace-only string (tag.md tag.name.required)', () => {
+    const result = createTagSchema.safeParse({ name: '   ' });
+    expect(result.success).toBe(false);
+  });
+
+  it('rejects name with 41 chars (tag.md tag.name.length)', () => {
+    const longName = 'a'.repeat(41);
+    const result = createTagSchema.safeParse({ name: longName });
+    expect(result.success).toBe(false);
+  });
+
+  it('accepts valid name and applies trim (tag.md tag.name.required, tag.md tag.name.length)', () => {
+    const result = createTagSchema.safeParse({ name: '  Sci-Fi  ' });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.name).toBe('Sci-Fi');
+    }
   });
 });
