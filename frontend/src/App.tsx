@@ -3,6 +3,7 @@ import { Layout } from './components/Layout';
 import { BooksPage } from './pages/BooksPage';
 import { UsersPage } from './pages/UsersPage';
 import { RentalsPage } from './pages/RentalsPage';
+import { TagsPage } from './pages/TagsPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/books" element={<BooksPage />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/rentals" element={<RentalsPage />} />
+          <Route path="/tags" element={<TagsPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>
