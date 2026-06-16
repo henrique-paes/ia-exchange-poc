@@ -16,6 +16,7 @@ const book = (id: string, title: string, available: boolean) => ({
   available,
   creatorId: 'u1',
   createdAt: '',
+  tags: [] as import('../api/types').Tag[],
 });
 
 beforeEach(() => {

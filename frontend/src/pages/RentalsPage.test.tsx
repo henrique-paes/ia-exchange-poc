@@ -24,7 +24,7 @@ const rental = (returnedAt: string | null) => ({
 beforeEach(() => {
   vi.mocked(listUsers).mockResolvedValue([{ id: 'u1', name: 'Alice', createdAt: '' }]);
   vi.mocked(listBooks).mockResolvedValue([
-    { id: 'b1', title: 'Dune', author: 'A', available: false, creatorId: 'u1', createdAt: '' },
+    { id: 'b1', title: 'Dune', author: 'A', available: false, creatorId: 'u1', createdAt: '', tags: [] },
   ]);
   vi.mocked(listUserRentals).mockResolvedValue([rental(null)]);
   vi.mocked(returnRental).mockResolvedValue(rental('2026-01-01'));
