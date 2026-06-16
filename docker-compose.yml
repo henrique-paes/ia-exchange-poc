@@ -29,6 +29,7 @@ services:
       NODE_ENV: development
       PORT: 3000
       DATABASE_URL: postgresql://${POSTGRES_USER:-library}:${POSTGRES_PASSWORD:-library}@db:5432/${POSTGRES_DB:-library}?schema=public
+      CORS_ORIGIN: http://localhost:${FRONTEND_PORT:-5173}
     ports:
       - '${BACKEND_PORT:-3001}:3000'
     volumes:
