@@ -1,0 +1,32 @@
+{
+  "card": "tag-spec",
+  "origem": "docs/specs/tag.md (plano planejador T1-T26)",
+  "modo": "local (sem push/PR remoto - politica Shopper, remote nao-shopperti)",
+  "base_branch": "feat/agents-poc",
+  "decisoes": {
+    "book_update_verbo": "PATCH",
+    "filtro_tagIds": "params_repetidos (?tagIds=a&tagIds=b)",
+    "escopo_ui": "backend + UI minima"
+  },
+  "ondas": [
+    ["U1", "U2", "U7", "U8"],
+    ["U3", "U6"],
+    ["U4", "U9"],
+    ["U5", "U10"]
+  ],
+  "tarefas": {
+    "U1": { "titulo": "Estender specs api.md + book.md (T14)", "depende_de": [], "arquivos": ["docs/specs/api.md", "docs/specs/book.md"], "branch": "feat/tag-u1-specs", "status": "concluida", "ciclos_revisao": 1, "ultimo_veredito": "APPROVE", "merge": "c45454b" },
+    "U2": { "titulo": "Prisma model Tag + N:N + migration + test helper (T1,T2)", "depende_de": [], "arquivos": ["backend/prisma/schema.prisma", "backend/prisma/migrations", "backend/tests/helpers/db.ts"], "branch": "feat/tag-u2-prisma", "status": "concluida", "ciclos_revisao": 1, "ultimo_veredito": "APPROVE", "merge": "d9e90b4" },
+    "U7": { "titulo": "Spec ui-tags (T16)", "depende_de": [], "arquivos": ["docs/specs/ui-tags.md"], "branch": "feat/tag-u7-uispec", "status": "concluida", "ciclos_revisao": 2, "ultimo_veredito": "APPROVE", "merge": "17188af" },
+    "U8": { "titulo": "Frontend types Tag + Book.tags (T17)", "depende_de": [], "arquivos": ["frontend/src/api/types.ts", "frontend/src/pages/BooksPage.test.tsx", "frontend/src/pages/RentalsPage.test.tsx"], "branch": "feat/tag-u8-fetypes", "status": "concluida", "ciclos_revisao": 2, "ultimo_veredito": "APPROVE", "merge": "c2cdd7c" },
+    "U3": { "titulo": "Modulo Tag backend completo (T3-T7)", "depende_de": ["U2"], "arquivos": ["backend/src/modules/tags/*", "backend/src/routes.ts", "backend/tests/tag.service.test.ts"], "branch": "feat/tag-u3-tagmodule", "status": "concluida", "ciclos_revisao": 2, "ultimo_veredito": "APPROVE", "merge": "faa35e1" },
+    "U6": { "titulo": "Seed + TASKS.md (T15)", "depende_de": ["U2"], "arquivos": ["backend/prisma/seed.ts", "TASKS.md"], "branch": "feat/tag-u6-seed", "status": "concluida", "ciclos_revisao": 1, "ultimo_veredito": "APPROVE", "merge": "9076d45" },
+    "U4": { "titulo": "Relacao Book-Tags backend (T8-T12)", "depende_de": ["U2", "U3"], "arquivos": ["backend/src/modules/books/*", "backend/tests/book.service.test.ts", "backend/tests/integration/api.test.ts (2 testes filtro)"], "branch": "feat/tag-u4-bookrel", "status": "concluida", "ciclos_revisao": 2, "ultimo_veredito": "APPROVE", "merge": "84d4f47" },
+    "U9": { "titulo": "Frontend Tags page + API + nav (T18-T21)", "depende_de": ["U8", "U3"], "arquivos": ["frontend/src/api/tags.ts", "frontend/src/pages/TagsPage.tsx", "frontend/src/pages/TagsPage.test.tsx", "frontend/src/App.tsx", "frontend/src/components/Layout.tsx"], "branch": "feat/tag-u9-fetags", "status": "concluida", "ciclos_revisao": 1, "ultimo_veredito": "APPROVE", "merge": "b08184f" },
+    "U5": { "titulo": "Testes integracao tags + book-tags (T13)", "depende_de": ["U3", "U4", "U2"], "arquivos": ["backend/tests/integration/api.test.ts"], "branch": "feat/tag-u5-integ", "status": "concluida", "ciclos_revisao": 1, "ultimo_veredito": "APPROVE", "merge": "4be5ea9" },
+    "U10": { "titulo": "Frontend Books tags + filtro (T22-T26)", "depende_de": ["U8", "U4"], "arquivos": ["frontend/src/api/books.ts", "frontend/src/components/TagPicker.tsx", "frontend/src/pages/BooksPage.tsx", "frontend/src/pages/BooksPage.test.tsx", "frontend/src/App.test.tsx"], "branch": "feat/tag-u10-febooks", "status": "concluida", "ciclos_revisao": 2, "ultimo_veredito": "APPROVE", "merge": "ff12327" }
+  },
+  "onda_atual": "concluido",
+  "pipeline_status": "FECHADO - 10/10 unidades mergeadas",
+  "atualizado_em": "2026-06-16"
+}
