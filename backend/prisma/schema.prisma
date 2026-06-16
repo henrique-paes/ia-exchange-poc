@@ -34,6 +34,15 @@ model Book {
   creator   User     @relation("BookCreator", fields: [creatorId], references: [id])
 
   rentals   Rental[]
+  tags      Tag[]
+}
+
+model Tag {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  books     Book[]
 }
 
 model Rental {

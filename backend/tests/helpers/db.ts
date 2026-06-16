@@ -6,6 +6,7 @@ import { prisma } from '../../src/prisma';
 export async function resetDb(): Promise<void> {
   await prisma.rental.deleteMany();
   await prisma.book.deleteMany();
+  await prisma.tag.deleteMany();
   await prisma.user.deleteMany();
 }
 
