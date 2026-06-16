@@ -185,10 +185,10 @@ Specs: [`docs/specs/ui-style.md`](./docs/specs/ui-style.md) (standard) +
 
 ### CARD-051: UI primitives
 
-- [ ] Test + impl `Button` (primary/secondary/ghost/danger, disabled, focus)
-- [ ] Test + impl `Input` + `Select` (focus, invalid, disabled)
-- [ ] Test + impl `Field`/form layout + `StatusPill`
-- [ ] Refactor `AsyncBoundary` to spec (spinner, error + Retry)
+- [x] Test + impl `Button` (primary/secondary/ghost/danger, disabled, focus)
+- [x] Test + impl `Input` + `Select` (focus, invalid, disabled)
+- [x] Test + impl `Field`/form layout + `StatusPill`
+- [x] Refactor `AsyncBoundary` to spec (spinner, error + Retry)
 
 ### CARD-052: Apply to pages
 

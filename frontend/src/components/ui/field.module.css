@@ -1,0 +1,58 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+}
+
+.control {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  min-height: 40px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.control::placeholder {
+  color: var(--color-text-muted);
+}
+
+.control:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-focus);
+}
+
+.control:disabled {
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.control[aria-invalid='true'] {
+  border-color: var(--color-danger);
+}
+
+/* native select chevron */
+.select {
+  appearance: none;
+  padding-right: var(--space-6);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path fill='%236b635a' d='M3 4.5 6 8l3-3.5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+}
+
+.errorText {
+  font-size: var(--text-xs);
+  color: var(--color-danger);
+}
