@@ -52,6 +52,10 @@ export function createBookService(repo: BookRepository, users: UserService, tags
 
       let deduped: string[] | undefined;
       if (input.tagIds !== undefined) {
+        // TOCTOU: findManyByIds and repo.update are two separate DB calls with no
+        // transaction guard. A tag deleted between the two calls would cause a
+        // silent partial update. When tag deletion is implemented, wrap both calls
+        // in prisma.$transaction to make this atomic.
         deduped = await validateAndDeduplicateTags(input.tagIds); // book.tags.exists + book.tags.unique
       }
 

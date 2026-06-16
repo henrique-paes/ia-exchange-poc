@@ -8,6 +8,7 @@ import { BookRepository } from '../src/modules/books/book.repository';
 import { UserService } from '../src/modules/users/user.service';
 import { TagRepository } from '../src/modules/tags/tag.repository';
 import { Book, Tag } from '@prisma/client';
+import { updateBookSchema } from '../src/modules/books/book.schema';
 
 // ──────────────────────── helpers / fakes ────────────────────────
 
@@ -248,8 +249,6 @@ describe('book.list', () => {
 // ──────────────────── updateBookSchema validation ────────────────────
 
 describe('updateBookSchema', () => {
-  const { updateBookSchema } = require('../src/modules/books/book.schema');
-
   it('accepts partial body with only title', () => {
     const result = updateBookSchema.safeParse({ title: 'New Title' });
     expect(result.success).toBe(true);

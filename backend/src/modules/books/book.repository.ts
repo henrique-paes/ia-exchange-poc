@@ -36,6 +36,9 @@ export const bookRepository: BookRepository = {
     }),
 
   list: (filter) => {
+    // book.filterByTags — AND/match-all: each tag produces one `some` subquery.
+    // N tagIds → N subqueries joined with AND. For large N this can be expensive;
+    // the cardinality of tagIds should be capped (e.g. max 10) in a future release.
     const where =
       filter?.tagIds && filter.tagIds.length > 0
         ? {
