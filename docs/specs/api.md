@@ -39,6 +39,9 @@ All request and response bodies are JSON.
 ### Books
 - `POST /books` — body `{ title, author, creatorId, tagIds?: string[] }` → `201 Book` | `400` | `404`
 - `GET /books` — query params repetidos: `?tagIds=<uuid>&tagIds=<uuid>` (match-all AND; omitir retorna todos) → `200 Book[]`
+  - Ids de filtro não são validados estritamente: um id desconhecido ou sintaticamente
+    inválido (não-uuid) simplesmente não casa nenhum book — retorna vazio, **sem** erro 400.
+    (Ver `tag.md` §"Unknown filter ids do not error".)
 - `GET /books/:id` → `200 Book` | `404`
 - `PATCH /books/:id` — body parcial `{ title?: string, author?: string, tagIds?: string[] }` → `200 Book` | `400` | `404`
   - Campos omitidos permanecem inalterados.

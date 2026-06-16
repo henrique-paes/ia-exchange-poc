@@ -22,14 +22,22 @@ A book in the library, created by a user, rentable by users.
 - `book.author.required` — author present, non-empty after trim (create; optional on update).
 - `book.creator.exists` — `creatorId` must reference an existing user, else not-found.
 - `book.update.noFields` — a PATCH request with no recognized fields in the body is a validation error (400).
-- `book.tags.optional` — `tagIds` is optional on create and update. See [`tag.md`](./tag.md) for full rules.
+- `book.tags.optional` — `tagIds` is optional. On **create**, omitting `tagIds` or
+  sending `[]` are equivalent: the book is created with 0 tags. On **update (PATCH)**,
+  omitting `tagIds` preserves the existing links; sending `[]` clears all tags.
+  See [`tag.md`](./tag.md) for full rules.
 - `book.tags.exists` — every `tagId` in `tagIds` must reference an existing tag, else not-found (404).
+- `book.tags.unique` — duplicate ids within one `tagIds` payload are deduplicated; the
+  book is linked to a given tag at most once. This applies to both create and update.
+  Fully specified in [`tag.md`](./tag.md) under `book.tags.unique`.
 
 ## Behavior
 
 - `book.create` — any existing user can create a book from `{ title, author, creatorId, tagIds? }`.
-  New books start `available = true`. If `tagIds` is provided, validates all ids exist before
-  creating the book and its tag links atomically (see `book.tags.exists`).
+  New books start `available = true`. Omitting `tagIds` or sending `tagIds: []` are equivalent:
+  the book is created with 0 tags. If `tagIds` is non-empty, validates all ids exist before
+  creating the book and its tag links atomically (see `book.tags.exists`). Duplicate ids are
+  deduplicated silently (see `book.tags.unique`).
 - `book.update` — `PATCH /books/:id` accepts a partial body `{ title?, author?, tagIds? }`.
   Only supplied fields are updated. `tagIds` when present replaces the full tag set
   (set semantics: `[]` clears all tags, omitted leaves tags unchanged). Returns the updated book
