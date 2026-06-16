@@ -5,6 +5,12 @@ export interface User {
   createdAt: string;
 }
 
+export interface Tag {
+  id: string;
+  name: string;
+  createdAt: string;
+}
+
 export interface Book {
   id: string;
   title: string;
@@ -12,6 +18,7 @@ export interface Book {
   available: boolean;
   creatorId: string;
   createdAt: string;
+  tags: Tag[];
 }
 
 export interface Rental {
