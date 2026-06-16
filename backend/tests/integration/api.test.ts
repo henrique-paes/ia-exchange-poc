@@ -62,6 +62,22 @@ describe('books API', () => {
     const unknown = await request(app).get('/books/00000000-0000-0000-0000-000000000000');
     expect(unknown.status).toBe(404);
   });
+
+  it('rejects non-uuid tagIds in query with 400 (book.filterByTags — query validation)', async () => {
+    // qs nested objects like ?tagIds[a]=b must not reach the service
+    const res = await request(app).get('/books?tagIds=not-a-uuid');
+    expect(res.status).toBe(400);
+    expect(res.body.error.code).toBe('validation_error');
+  });
+
+  it('accepts valid uuid tagIds in query (book.filterByTags)', async () => {
+    const res = await request(app).get(
+      '/books?tagIds=00000000-0000-0000-0000-000000000001',
+    );
+    // Unknown tag IDs simply produce no matches (empty list), not an error
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
 });
 
 describe('rentals API', () => {
