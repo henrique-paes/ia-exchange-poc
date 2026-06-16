@@ -20,6 +20,9 @@ export function Layout({ children }: { children: ReactNode }) {
           <NavLink to="/rentals" className={linkClass}>
             Rentals
           </NavLink>
+          <NavLink to="/tags" className={linkClass}>
+            Tags
+          </NavLink>
         </nav>
       </header>
       <main>{children}</main>
