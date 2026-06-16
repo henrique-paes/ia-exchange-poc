@@ -26,15 +26,18 @@ Campo:
 | Elemento | Regra |
 |---|---|
 | `<label>` | Texto "Tag name"; `for` associado ao input. |
-| `<input type="text">` | `aria-label="tag name"`; placeholder "e.g. Sci-Fi"; `maxlength="40"`. |
+| `<input type="text">` | `aria-label="tag name"`; placeholder "e.g. Sci-Fi". |
 | Botão "Create tag" | `variant=primary`; min-height 40px (hit target `ui-components.md §Button`). |
 
 Estados do botão:
 
 - **Desabilitado** (`disabled` nativo, `opacity:.5`, `cursor:not-allowed`) quando:
-  - campo vazio ou contém apenas espaços (traça `tag.name.required`), **ou**
-  - comprimento após trim > 40 chars (traça `tag.name.length`), **ou**
+  - `name.trim().length === 0` (traça `tag.name.required`), **ou**
+  - `name.trim().length > 40` (traça `tag.name.length` — `tag.md:18` define 1–40 chars após trim), **ou**
   - submissão em andamento.
+- Não usar `maxlength="40"` no input: esse atributo conta antes do trim e tornaria
+  a verificação de `> 40` código morto. A validação de comprimento é feita
+  exclusivamente no estado do botão, sobre o valor já trimado.
 - **Habilitado** apenas com valor válido e formulário ocioso.
 
 Tratamento de erros (resposta da API):
@@ -86,7 +89,9 @@ Traces: `book.tags.optional`, `book.tags.exists`, `book.tags.unique`.
 - Permite selecionar 0..N tags; nenhuma seleção é válida (`book.tags.optional`).
 - IDs duplicados dentro da mesma seleção são descartados silenciosamente pelo
   backend (`book.tags.unique`), portanto a UI não precisa impedir seleção dupla,
-  mas deve evitar exibir opções duplicadas na lista.
+  mas deve evitar exibir opções duplicadas na lista. A dedupe das opções é por
+  `tag.id` (a fonte é `tag.list`, que não repete ids; a unicidade de `tag.name`
+  é case-insensitive e vive no service, não na lista de opções).
 - O payload enviado inclui `tagIds: string[]` com os ids selecionados (ou `[]` /
   omitido se nenhuma tag selecionada).
 
@@ -167,8 +172,9 @@ Traces: `book.filterByTags`, semântica AND/match-all, params repetidos.
 - **Com tags selecionadas**: exibir apenas books que possuam **todas** as tags
   selecionadas (semântica AND/match-all, traça `book.filterByTags`).
 - A seleção de filtro é refletida nos query params da URL como params repetidos:
-  `?tagIds=<id1>&tagIds=<id2>` (traça decisão de design documentada em
-  `tag-book-relation-decisions.md`).
+  `?tagIds=<id1>&tagIds=<id2>` (semântica AND/match-all definida em
+  `tag.md` §"Filtering books by tags" — regra `book.filterByTags`; formato de
+  params repetidos definido em `api.md` — GET /books).
 - Ao carregar a página com `?tagIds=…` na URL, o seletor de filtro deve ser
   pré-populado com os ids correspondentes.
 - **IDs desconhecidos** nos query params: não geram erro na UI; simplesmente não
