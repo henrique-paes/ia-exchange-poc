@@ -192,7 +192,7 @@ Specs: [`docs/specs/ui-style.md`](./docs/specs/ui-style.md) (standard) +
 
 ### CARD-052: Apply to pages
 
-- [ ] Style `Layout` + `Nav` (active link, responsive)
-- [ ] Restyle Users/Books/Rentals pages with primitives + card lists
-- [ ] Empty states for each list
-- [ ] Keep existing page tests green; add focus/disabled assertions where useful
+- [x] Style `Layout` + `Nav` (active link, responsive)
+- [x] Restyle Users/Books/Rentals pages with primitives + card lists
+- [x] Empty states for each list
+- [x] Keep existing page tests green; add focus/disabled assertions where useful

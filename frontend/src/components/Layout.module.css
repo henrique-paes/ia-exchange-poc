@@ -1,0 +1,37 @@
+.shell {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-5);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.link {
+  color: var(--color-text-muted);
+  padding: var(--space-1) 0;
+  font-weight: var(--font-medium);
+}
+
+.link:hover {
+  color: var(--color-text);
+}
+
+.active {
+  color: var(--color-primary);
+}
