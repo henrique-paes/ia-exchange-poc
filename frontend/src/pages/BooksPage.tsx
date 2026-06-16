@@ -149,7 +149,13 @@ function BookRow({
             <StatusPill tone={book.available ? 'success' : 'warning'}>
               {book.available ? 'available' : 'rented'}
             </StatusPill>
-            <Button variant="ghost" onClick={() => setEditing(true)}>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setSelectedTagIds(book.tags.map((t) => t.id));
+                setEditing(true);
+              }}
+            >
               Edit tags
             </Button>
             <Button onClick={onRent} disabled={!book.available || !canRent}>
@@ -164,6 +170,7 @@ function BookRow({
 
 export function BooksPage() {
   const [filterTagIds, setFilterTagIds] = useState<string[]>([]);
+  // deps: join serializa o array em string para estabilizar a identidade da dep (array novo a cada render seria sempre diferente)
   const books = useAsync(() => listBooks(filterTagIds.length ? filterTagIds : undefined), [
     // eslint-disable-next-line react-hooks/exhaustive-deps
     filterTagIds.join(','),
