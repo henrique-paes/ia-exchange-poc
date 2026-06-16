@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import App from './App';
 
 vi.mock('./api/books', () => ({
@@ -11,10 +11,13 @@ vi.mock('./api/users', () => ({
   listUserRentals: vi.fn().mockResolvedValue([]),
 }));
 vi.mock('./api/rentals', () => ({ rentBook: vi.fn(), returnRental: vi.fn() }));
+vi.mock('./api/tags', () => ({ listTags: vi.fn().mockResolvedValue([]), createTag: vi.fn() }));
 
 describe('App', () => {
-  it('renders the nav and resolves the default route (CARD-030)', () => {
-    render(<App />);
+  it('renders the nav and resolves the default route (CARD-030)', async () => {
+    await act(async () => {
+      render(<App />);
+    });
     expect(screen.getByRole('link', { name: 'Books' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Users' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Rentals' })).toBeInTheDocument();
