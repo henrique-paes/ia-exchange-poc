@@ -168,3 +168,31 @@ Domain: a library where **users** can **create books** and **rent books**.
 - [x] Update README with architecture diagram + run steps
 - [x] Document env vars
 - [x] Record known limitations + next steps
+
+---
+
+## Phase 5 — UI Styling (TDD)
+
+Specs: [`docs/specs/ui-style.md`](./docs/specs/ui-style.md) (standard) +
+[`docs/specs/ui-components.md`](./docs/specs/ui-components.md).
+
+### CARD-050: Design tokens + global base
+
+- [x] Spec: confirm `ui-style.md`
+- [ ] Add `src/styles/tokens.css` (light + dark via prefers-color-scheme)
+- [ ] Add `src/styles/global.css` (reset + base elements), import both in `main.tsx`
+- [ ] Verify dark mode flips with OS preference
+
+### CARD-051: UI primitives
+
+- [ ] Test + impl `Button` (primary/secondary/ghost/danger, disabled, focus)
+- [ ] Test + impl `Input` + `Select` (focus, invalid, disabled)
+- [ ] Test + impl `Field`/form layout + `StatusPill`
+- [ ] Refactor `AsyncBoundary` to spec (spinner, error + Retry)
+
+### CARD-052: Apply to pages
+
+- [ ] Style `Layout` + `Nav` (active link, responsive)
+- [ ] Restyle Users/Books/Rentals pages with primitives + card lists
+- [ ] Empty states for each list
+- [ ] Keep existing page tests green; add focus/disabled assertions where useful
