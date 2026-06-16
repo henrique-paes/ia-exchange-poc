@@ -196,3 +196,19 @@ Specs: [`docs/specs/ui-style.md`](./docs/specs/ui-style.md) (standard) +
 - [x] Restyle Users/Books/Rentals pages with primitives + card lists
 - [x] Empty states for each list
 - [x] Keep existing page tests green; add focus/disabled assertions where useful
+
+---
+
+## Phase 6 — Tag Domain
+
+Spec: [`docs/specs/tag.md`](./docs/specs/tag.md).
+
+### CARD-026: Tag domain + Book⇄Tags
+
+- [x] Spec: `docs/specs/tag.md` escrito e revisado
+- [x] Model `Tag` + migration + relação m2m `Book.tags` (schema.prisma + `_BookToTag`)
+- [x] Módulo Tag: `POST /tags`, `GET /tags`, `GET /tags/:id`, `DELETE /tags/:id`
+- [x] Seed atualizado com tags de exemplo e books vinculados (Fiction, Sci-Fi, Classic, Non-Fiction)
+- [ ] Relação em Book: `POST /books` e `PATCH /books/:id` aceitam `tagIds`; resposta inclui `tags[]`
+- [ ] Filtro `GET /books?tagIds=…` (semântica AND/match-all)
+- [ ] UI de tags: exibição nos cards de livro + seletor na criação/edição
