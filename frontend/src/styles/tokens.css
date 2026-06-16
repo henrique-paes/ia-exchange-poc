@@ -1,0 +1,87 @@
+/* Design tokens — see docs/specs/ui-style.md. Components reference these via
+   var(--…) and never hard-code color/space/radius/size. */
+:root {
+  /* color — light */
+  --color-bg: #fbf8f4;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f3eee8;
+  --color-border: #e7dfd5;
+  --color-text: #2a2622;
+  --color-text-muted: #6b635a;
+  --color-primary: #e07a5f;
+  --color-primary-hover: #c9654b;
+  --color-primary-contrast: #ffffff;
+  --color-success: #3d9a6e;
+  --color-danger: #d1495b;
+  --color-warning: #e0a458;
+  --color-focus: #e07a5f;
+
+  /* tints for status pills (translucent so they adapt to surface) */
+  --tint-success: rgba(61, 154, 110, 0.14);
+  --tint-warning: rgba(224, 164, 88, 0.18);
+
+  /* spacing — 4px base */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* radius — friendly/rounded */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* typography */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+  --leading: 1.5;
+  --leading-tight: 1.2;
+
+  /* shadow — soft, warm, low-opacity */
+  --shadow-sm: 0 1px 2px rgba(42, 38, 34, 0.06);
+  --shadow-md: 0 4px 12px rgba(42, 38, 34, 0.1);
+  --shadow-lg: 0 8px 24px rgba(42, 38, 34, 0.14);
+
+  /* motion & layout */
+  --transition: 150ms ease;
+  --z-nav: 100;
+  --z-overlay: 200;
+  --z-toast: 300;
+  --container: 880px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1714;
+    --color-surface: #241f1b;
+    --color-surface-alt: #2e2823;
+    --color-border: #3a322c;
+    --color-text: #f0eae3;
+    --color-text-muted: #a89e93;
+    --color-primary: #f2916f;
+    --color-primary-hover: #f4a484;
+    --color-primary-contrast: #1a1714;
+    --color-success: #5fb98c;
+    --color-danger: #e36b7b;
+    --color-warning: #ebb877;
+    --color-focus: #f2916f;
+    --tint-success: rgba(95, 185, 140, 0.16);
+    --tint-warning: rgba(235, 184, 119, 0.18);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}

@@ -179,9 +179,9 @@ Specs: [`docs/specs/ui-style.md`](./docs/specs/ui-style.md) (standard) +
 ### CARD-050: Design tokens + global base
 
 - [x] Spec: confirm `ui-style.md`
-- [ ] Add `src/styles/tokens.css` (light + dark via prefers-color-scheme)
-- [ ] Add `src/styles/global.css` (reset + base elements), import both in `main.tsx`
-- [ ] Verify dark mode flips with OS preference
+- [x] Add `src/styles/tokens.css` (light + dark via prefers-color-scheme)
+- [x] Add `src/styles/global.css` (reset + base elements), import both in `main.tsx`
+- [x] Verify dark mode flips with OS preference
 
 ### CARD-051: UI primitives
 
